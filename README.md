@@ -16,17 +16,18 @@ bun add -d @milkyskies/biome-config @biomejs/biome
 # or: pnpm add -D @milkyskies/biome-config @biomejs/biome
 ```
 
-Add a project `biome.json` that extends the base AND wires in the plugin:
+Add a project `biome.json` that extends the base — the GritQL plugin comes along automatically:
 
 ```json
 {
 	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
-	"extends": ["@milkyskies/biome-config/biome.json"],
-	"plugins": ["./node_modules/@milkyskies/biome-config/plugins/no-as-cast.grit"]
+	"extends": ["@milkyskies/biome-config/biome.json"]
 }
 ```
 
-The `plugins` array can't live in the extended config — Biome resolves plugin paths relative to the file that declares them, and from the consumer's CWD the extended-side `./plugins/...` doesn't exist. Two lines of consumer boilerplate is the workaround.
+The shared config declares the plugin as `./node_modules/@milkyskies/biome-config/plugins/no-as-cast.grit`. Biome resolves that path relative to the consumer's `biome.json`, so it picks up the plugin from the consumer's own `node_modules` — no consumer-side boilerplate.
+
+Caveat: assumes pnpm or bun (or any package manager that puts a per-package `node_modules/@milkyskies/biome-config` next to the consumer). Plain hoisted-at-root npm with nested `apps/*/biome.json` may not resolve until biome adds bare-specifier support in `plugins`.
 
 Add scripts to your project `package.json`:
 
