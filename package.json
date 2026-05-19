@@ -1,0 +1,10 @@
+{
+	"name": "@milkyskies/biome-config",
+	"version": "0.0.1",
+	"private": true,
+	"description": "Shared Biome config + GritQL plugins for milkyskies TypeScript projects.",
+	"files": [
+		"biome.json",
+		"plugins/"
+	]
+}

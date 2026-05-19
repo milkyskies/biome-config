@@ -1,0 +1,12 @@
+language js(typescript)
+
+// Bans TypeScript `as` type assertions across the project. `as const` is
+// allowed (it's a narrowing, not an unsound cast). Use Schema.decodeUnknown,
+// a type guard, or fix the source type instead.
+`$x as $t` as $node where {
+	$t <: not `const`,
+	register_diagnostic(
+		span = $node,
+		message = "Type assertion (`as`) is banned. Use `Schema.decodeUnknown`, a type guard, or fix the source type. (`as const` is allowed.)"
+	)
+}
