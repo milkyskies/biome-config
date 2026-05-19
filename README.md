@@ -5,7 +5,7 @@ Shared [Biome](https://biomejs.dev/) config + GritQL plugins for milkyskies Type
 ## What's in it
 
 - `biome.json` — formatter (tab indent, double quotes, no semicolons, line width 100) + linter (recommended + `noExplicitAny: error`) + import organizer.
-- `plugins/no-as-cast.grit` — bans `as` type assertions. `as const` is allowed.
+- `plugins/no-as-cast.grit` — bans `as` type assertions. Allowed: `as const`, `import { x as y }`, `import * as ns`. Suppress one-off legitimate cases with `// biome-ignore lint/plugin: <reason>`.
 
 ## Use it
 
