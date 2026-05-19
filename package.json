@@ -1,10 +1,42 @@
 {
 	"name": "@milkyskies/biome-config",
-	"version": "0.0.1",
-	"private": true,
+	"version": "0.1.0",
 	"description": "Shared Biome config + GritQL plugins for milkyskies TypeScript projects.",
+	"keywords": [
+		"biome",
+		"biomejs",
+		"config",
+		"linter",
+		"formatter",
+		"gritql"
+	],
+	"homepage": "https://github.com/milkyskies/biome-config",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/milkyskies/biome-config.git"
+	},
+	"bugs": {
+		"url": "https://github.com/milkyskies/biome-config/issues"
+	},
+	"license": "MIT",
+	"author": "milkyskies",
+	"main": "biome.json",
+	"exports": {
+		".": "./biome.json",
+		"./biome.json": "./biome.json",
+		"./plugins/no-as-cast.grit": "./plugins/no-as-cast.grit",
+		"./plugins/*": "./plugins/*"
+	},
 	"files": [
 		"biome.json",
-		"plugins/"
-	]
+		"plugins",
+		"README.md",
+		"LICENSE"
+	],
+	"peerDependencies": {
+		"@biomejs/biome": "^2.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

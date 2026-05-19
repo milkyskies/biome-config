@@ -9,10 +9,11 @@ Shared [Biome](https://biomejs.dev/) config + GritQL plugins for milkyskies Type
 
 ## Use it
 
-Install from GitHub (no npm registry — git URL works with `bun`/`npm`/`pnpm`):
+Install from npm:
 
 ```bash
-bun add -d github:milkyskies/biome-config @biomejs/biome
+bun add -d @milkyskies/biome-config @biomejs/biome
+# or: pnpm add -D @milkyskies/biome-config @biomejs/biome
 ```
 
 Add a project `biome.json` that extends the base AND wires in the plugin:
@@ -43,4 +44,4 @@ Agents writing code in projects that consume this config should run `bun run che
 
 ## Why a separate repo
 
-Could live inside [milky-kit](https://github.com/milkyskies/milky-kit) as a module, but milky-kit's existing `ts-shared` module assumes a pnpm monorepo with `packages/biome-config` as a workspace. Standalone non-monorepo TS projects (matrix-windmill-gateway etc.) need this lighter sharing path. See [venus-desk#5](https://github.com/milkyskies/venus-desk/issues/5) for the long-term reconciliation question.
+Published from its own repo so any TS project (monorepo or single-app) can depend on it via npm without forcing a milky-kit workspace layout. [milky-kit](https://github.com/milkyskies/milky-kit) consumes this as a regular npm devDependency in its template scaffolds.
